@@ -87,6 +87,7 @@ public class SmokeTest {
         WebElement lnLam = driver.findElement(By.id("ln_lam_id"));
         WebElement wdLam = driver.findElement(By.id("wd_lam_id"));
         WebElement button = driver.findElement(By.className("calc-btn"));
+
         layingMethodLaminate.selectByValue("2");
         lnRoom.click();
         lnRoom.clear();
@@ -102,9 +103,12 @@ public class SmokeTest {
         wdLam.sendKeys("200");
         direction.click();
         button.click();
-        WebElement result = driver.findElement(By.cssSelector(".calc-result div:first-child span"));
+        Thread.sleep(2000);
+        WebElement result = driver.findElement(By.cssSelector(".calc-result div:nth-child(1)"));
+        WebElement result2 = driver.findElement(By.cssSelector(".calc-result div:nth-child(2)"));
 
-        Assert.assertEquals(result.getAttribute("innerText"),"53");
+        Assert.assertEquals(result.getAttribute("innerText"),"Требуемое количество досок ламината: 53");
+        Assert.assertEquals(result2.getAttribute("innerText"),"Количество упаковок ламината: 7");
     }
     @AfterMethod
     public void tearDown(){
