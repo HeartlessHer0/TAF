@@ -36,6 +36,9 @@ public class CalcTestDiv {
         Assert.assertEquals(calculator.divInt(a, b), expectedResult, "Div Error");
     }
 
+    // ToDo: Название тестовых методов - переделать согласно https://dzone.com/articles/7-popular-unit-test-naming
+    // ToDo: Отсутствуют зависимые тесты
+    // ToDo: Отсутствуют приоритизированные тесты
 }
 
 
