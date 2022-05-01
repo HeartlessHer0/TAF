@@ -26,8 +26,12 @@ public class SauseDemoTests {
     @Test
     public void cssSelectorsTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.cssSelector("div input#user-name")).sendKeys("standard_user");
+        // driver.findElement(By.cssSelector("div input#user-name")).sendKeys("standard_user");
+        // driver.findElement(By.cssSelector("div > .form_input ")).sendKeys("standard_user");
+        driver.findElement(By.cssSelector("input[id|=user]")).sendKeys("standard_user");
+        //driver.findElement(By.cssSelector(".input_error.form_input ")).sendKeys("standard_user");
         driver.findElement(By.cssSelector("div input[type=password]")).sendKeys("secret_sauce");
+        Thread.sleep(2000);
         driver.findElement(By.cssSelector("div input.submit-button"));
         driver.findElement(By.cssSelector("div input#user-name")).clear();
         driver.findElement(By.cssSelector("div input[type=password]")).click();
@@ -40,6 +44,31 @@ public class SauseDemoTests {
 
         Thread.sleep(2000);
         driver.findElement(By.cssSelector("div input[value=Login]")).click();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.cssSelector("h3")).getText() ,"Epic sadface: Sorry, this user has been locked out.");
+
+    }
+    @Test
+    public void cssSelectorsTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com/");
+        // driver.findElement(By.xpath("div input#user-name")).sendKeys("standard_user");
+        // driver.findElement(By.xpath("div > .form_input ")).sendKeys("standard_user");
+        driver.findElement(By.xpath("input[id|=user]")).sendKeys("standard_user");
+        //driver.findElement(By.xpath(".input_error.form_input ")).sendKeys("standard_user");
+        driver.findElement(By.xpath("div input[type=password]")).sendKeys("secret_sauce");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("div input.submit-button"));
+        driver.findElement(By.xpath("div input#user-name")).clear();
+        driver.findElement(By.xpath("div input[type=password]")).click();
+        driver.findElement(By.xpath(".form_input[placeholder=Password]"));
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("#password")).click();
+        driver.findElement(By.xpath("div input#password"));
+        driver.findElement(By.xpath("div input#user-name")).sendKeys("locked_out_user");
+        Thread.sleep(2000);
+
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("div input[value=Login]")).click();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.cssSelector("h3")).getText() ,"Epic sadface: Sorry, this user has been locked out.");
 
