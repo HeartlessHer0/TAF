@@ -12,7 +12,7 @@ public class MenuTest extends BaseTest {
     }
     @Test
     public void validateProjectsSideMenuTest(){
-        loginStep.successLogin(ReadProperties.username(),ReadProperties.username());
+        loginStep.successLogin(ReadProperties.username(),ReadProperties.password());
         Assert.assertTrue(navigationSteps.navigateToProjectsPage().sideMenuPage.isPageOpened());
     }
 }
