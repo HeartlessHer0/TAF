@@ -53,24 +53,29 @@ public class SauseDemoTests {
         driver.get("https://www.saucedemo.com/");
         // driver.findElement(By.xpath("//div/input[@id='user-name']")).sendKeys("standard_user");
         // driver.findElement(By.xpath("//*[@class='input_error form_input error' and @id='user-name']")).sendKeys("standard_user");
-        driver.findElement(By.xpath("//div//input[contains()]")).sendKeys("standard_user");
-        // driver.findElement(By.xpath(".input_error.form_input ")).sendKeys("standard_user");
-        driver.findElement(By.xpath("//*[@type='password']")).sendKeys("secret_sauce");
+        // driver.findElement(By.xpath("//input[contains(@data-test, 'username')]")).sendKeys("standard_user");
+        driver.findElement(By.xpath("//*[starts-with(@placeholder, 'User')]")).sendKeys("standard_user");
+        // driver.findElement(By.xpath("//*[@type='password']")).sendKeys("secret_sauce");
+        // driver.findElement(By.xpath("//*[@class='input_error form_input error' and @type='password']")).sendKeys("secret_sauce");
+        // driver.findElement(By.xpath("//div/child::input[@id='user-name']")).sendKeys("secret_sauce");
+        driver.findElement(By.xpath("//*[@class='form_group']/following::input[contains(@type, 'password')]")).sendKeys("secret_sauce");
+        //driver.findElement(By.xpath("//*[contains(@class, 'svg-inline--fa')]/preceding-sibling::input[contains(@id, 'password')]")).sendKeys("secret_sauce");
         Thread.sleep(2000);
-        driver.findElement(By.xpath("div input.submit-button"));
-        driver.findElement(By.xpath("div input#user-name")).clear();
-        driver.findElement(By.xpath("div input[type=password]")).click();
-        driver.findElement(By.xpath(".form_input[placeholder=Password]"));
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("#password")).click();
-        driver.findElement(By.xpath("div input#password"));
-        driver.findElement(By.xpath("div input#user-name")).sendKeys("locked_out_user");
+        driver.findElement(By.xpath("//*[@type='submit' or @value='login']"));
+        driver.findElement(By.xpath("//div/input[@id='user-name']")).clear();
+        driver.findElement(By.xpath("//*[@type='password']")).click();
+        //driver.findElement(By.xpath("//*[@data-prefix='fas']/preceding-sibling::input[@type='password']")).click();
+        driver.findElement(By.xpath("//input[contains(@data-test, 'username')]")).sendKeys("locked_out_user");
+        //driver.findElement(By.xpath("//*[@aria-hidden='true']/preceding-sibling::input[@type='text']")).sendKeys("locked_out_user");
         Thread.sleep(2000);
 
         Thread.sleep(2000);
-        driver.findElement(By.xpath("div input[value=Login]")).click();
+        driver.findElement(By.xpath("//div/following::input[@value='Login']")).click();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.cssSelector("h3")).getText() ,"Epic sadface: Sorry, this user has been locked out.");
+        Assert.assertEquals(driver.findElement(By.xpath("//h3[contains(text(), 'Epic sadface: Sorry, this user has been locked out.')]")).getText() ,"Epic sadface: Sorry, this user has been locked out.");
 
     }
+
 }
+
+
