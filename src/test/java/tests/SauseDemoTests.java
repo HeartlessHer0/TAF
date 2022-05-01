@@ -27,8 +27,8 @@ public class SauseDemoTests {
     public void cssSelectorsTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com/");
         // driver.findElement(By.cssSelector("div input#user-name")).sendKeys("standard_user");
-        // driver.findElement(By.cssSelector("div > .form_input ")).sendKeys("standard_user");
-        driver.findElement(By.cssSelector("input[id|=user]")).sendKeys("standard_user");
+        driver.findElement(By.cssSelector("div > .form_input#user-name ")).sendKeys("standard_user");
+        // driver.findElement(By.cssSelector("input[id|=user]")).sendKeys("standard_user");
         //driver.findElement(By.cssSelector(".input_error.form_input ")).sendKeys("standard_user");
         driver.findElement(By.cssSelector("div input[type=password]")).sendKeys("secret_sauce");
         Thread.sleep(2000);
@@ -49,13 +49,13 @@ public class SauseDemoTests {
 
     }
     @Test
-    public void cssSelectorsTest() throws InterruptedException {
+    public void xpathSelectorsTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com/");
-        // driver.findElement(By.xpath("div input#user-name")).sendKeys("standard_user");
-        // driver.findElement(By.xpath("div > .form_input ")).sendKeys("standard_user");
-        driver.findElement(By.xpath("input[id|=user]")).sendKeys("standard_user");
-        //driver.findElement(By.xpath(".input_error.form_input ")).sendKeys("standard_user");
-        driver.findElement(By.xpath("div input[type=password]")).sendKeys("secret_sauce");
+        // driver.findElement(By.xpath("//div/input[@id='user-name']")).sendKeys("standard_user");
+        // driver.findElement(By.xpath("//*[@class='input_error form_input error' and @id='user-name']")).sendKeys("standard_user");
+        driver.findElement(By.xpath("//div//input[contains()]")).sendKeys("standard_user");
+        // driver.findElement(By.xpath(".input_error.form_input ")).sendKeys("standard_user");
+        driver.findElement(By.xpath("//*[@type='password']")).sendKeys("secret_sauce");
         Thread.sleep(2000);
         driver.findElement(By.xpath("div input.submit-button"));
         driver.findElement(By.xpath("div input#user-name")).clear();
