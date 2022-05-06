@@ -19,6 +19,10 @@ public class ReadProperties {
         return properties.getProperty("url");
     }
 
+    public static int timeout() {
+        return Integer.parseInt(properties.getProperty("timeout"));
+    }
+
     public static String browserName() {
         return properties.getProperty("browser");
     }

@@ -27,9 +27,9 @@ public class AddProjectPage extends BasePage {
     private By showTheAnnouncementCheckboxLocator = By.xpath("//*[@name='show_announcement']");
     private By addProjectButtonLocator = By.xpath("//*[@id='accept']");
 
-    public WebElement getNameInput(){return driver.findElement(nameInputLocator);}
-    public WebElement getAnnouncementInput(){return driver.findElement(announcementInputLocator);}
-    public WebElement getShowTheAnnouncementCheckbox(){return driver.findElement(showTheAnnouncementCheckboxLocator);}
-    public WebElement AddProjectButton(){return driver.findElement(addProjectButtonLocator);}
+    public WebElement getNameInput(){return waitsService.waitForPresenceOfElement(nameInputLocator);}
+    public WebElement getAnnouncementInput(){return waitsService.waitForPresenceOfElement(announcementInputLocator);}
+    public WebElement getShowTheAnnouncementCheckbox(){return waitsService.waitForPresenceOfElement(showTheAnnouncementCheckboxLocator);}
+    public WebElement AddProjectButton(){return waitsService.waitForPresenceOfElement(addProjectButtonLocator);}
 }
 

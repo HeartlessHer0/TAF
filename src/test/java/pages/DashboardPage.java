@@ -29,6 +29,6 @@ public class DashboardPage extends BasePage {
     }
 
     //Блок атомарных методов
-    public WebElement getHeaderTitleLabel(){return driver.findElement(headerTitleLabelLocator);}
-    public WebElement getAddProjectButtonLocator(){return driver.findElement(addProjectButtonLocator);}
+    public WebElement getHeaderTitleLabel(){return waitsService.waitForPresenceOfElement(headerTitleLabelLocator);}
+    public WebElement getAddProjectButtonLocator(){return waitsService.waitForPresenceOfElement(addProjectButtonLocator);}
 }

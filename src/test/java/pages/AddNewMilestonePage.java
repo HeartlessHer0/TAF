@@ -24,13 +24,13 @@ public class AddNewMilestonePage extends BasePage {
     protected By getPageIdentifier() {
         return inputNameLocator;
     }
-    public WebElement getInputName(){return driver.findElement(inputNameLocator);}
-    public WebElement getInputReference(){return driver.findElement(inputReferenceLocator);}
-    public WebElement getDropdownParent(String parentName){return driver.findElement(By.xpath(dropdownParentLocator.replace("Replace",parentName)));}
-    public WebElement getInputDescription(){return driver.findElement(inputDescriptionLocator);}
-    public WebElement getInputStartDate(){return driver.findElement(inputStartDateLocator);}
-    public WebElement getInputEndDate(){return driver.findElement(inputEndDateLocator);}
-    public WebElement getAddMilestoneButton(){return driver.findElement(AddMilestoneButtonLocator);}
+    public WebElement getInputName(){return waitsService.waitForPresenceOfElement(inputNameLocator);}
+    public WebElement getInputReference(){return waitsService.waitForPresenceOfElement(inputReferenceLocator);}
+    public WebElement getDropdownParent(String parentName){return waitsService.waitForPresenceOfElement(By.xpath(dropdownParentLocator.replace("Replace",parentName)));}
+    public WebElement getInputDescription(){return waitsService.waitForPresenceOfElement(inputDescriptionLocator);}
+    public WebElement getInputStartDate(){return waitsService.waitForPresenceOfElement(inputStartDateLocator);}
+    public WebElement getInputEndDate(){return waitsService.waitForPresenceOfElement(inputEndDateLocator);}
+    public WebElement getAddMilestoneButton(){return waitsService.waitForPresenceOfElement(AddMilestoneButtonLocator);}
 
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);

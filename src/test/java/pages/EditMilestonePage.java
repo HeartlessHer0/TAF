@@ -23,9 +23,9 @@ public class EditMilestonePage extends BasePage {
         return attachmentListLocator;
     }
 
-    public WebElement getDescriptionDisplay(){return  driver.findElement(descriptionDisplayLocator);}
-    public WebElement getAcceptButton(){return driver.findElement(acceptButtonLocator);}
-    public WebElement getDeleteButton(){return driver.findElement(deleteButtonLocator);}
-    public WebElement getConfirmDeleteCheckbox(){return driver.findElement(confirmDeleteCheckboxLocator);}
-    public WebElement getConfirmDeleteButton(){return driver.findElement(confirmDeleteButtonLocator);}
+    public WebElement getDescriptionDisplay(){return  waitsService.waitForPresenceOfElement(descriptionDisplayLocator);}
+    public WebElement getAcceptButton(){return waitsService.waitForPresenceOfElement(acceptButtonLocator);}
+    public WebElement getDeleteButton(){return waitsService.waitForPresenceOfElement(deleteButtonLocator);}
+    public WebElement getConfirmDeleteCheckbox(){return waitsService.waitForPresenceOfElement(confirmDeleteCheckboxLocator);}
+    public WebElement getConfirmDeleteButton(){return waitsService.waitForPresenceOfElement(confirmDeleteButtonLocator);}
 }

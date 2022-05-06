@@ -21,5 +21,5 @@ public class NewProjectAddedPage extends BasePage {
         super.openPageByUrl(pagePath);
     }
 
-    public WebElement getSuccessMessage(){return driver.findElement(successMessageLocator);}
+    public WebElement getSuccessMessage(){return waitsService.waitForPresenceOfElement(successMessageLocator);}
 }

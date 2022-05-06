@@ -23,8 +23,8 @@ public class MilestonesPage extends BasePage {
         super.openPageByUrl(pagePath);
     }
 
-    public WebElement getSuccessMessage(){return driver.findElement(successMessageLocator);}
-    public WebElement getNewMilestoneLinkText(String milestoneLinkText){return driver.findElement(By.xpath(newMilestoneLinkLocator.replace("Replace",milestoneLinkText)));}
-    public WebElement getDeleteMessage(){return  driver.findElement(deleteMessageLocator);}
+    public WebElement getSuccessMessage(){return waitsService.waitForPresenceOfElement(successMessageLocator);}
+    public WebElement getNewMilestoneLinkText(String milestoneLinkText){return waitsService.waitForPresenceOfElement(By.xpath(newMilestoneLinkLocator.replace("Replace",milestoneLinkText)));}
+    public WebElement getDeleteMessage(){return  waitsService.waitForPresenceOfElement(deleteMessageLocator);}
 }
 

@@ -21,8 +21,8 @@ public class CreatedMilestonePage extends BasePage {
     protected By getPageIdentifier() {
         return statusChartContainerLocator;
     }
-    public WebElement getEditButton(){return driver.findElement(editButtonLocator);}
-    public WebElement getMilestoneDescription(){return driver.findElement(milestoneDescriptionLocator);}
-    public WebElement getMilestoneHeader(){return  driver.findElement(milestoneHeaderLocator);}
+    public WebElement getEditButton(){return waitsService.waitForPresenceOfElement(editButtonLocator);}
+    public WebElement getMilestoneDescription(){return waitsService.waitForPresenceOfElement(milestoneDescriptionLocator);}
+    public WebElement getMilestoneHeader(){return  waitsService.waitForPresenceOfElement(milestoneHeaderLocator);}
 
 }
