@@ -54,7 +54,7 @@ public class ActionsTest extends BaseTest {
         WebElement enabledButton = wait.waitForVisibilityLocatedBy(By.xpath("//form/button[contains(text(), 'Enable')]"));
         enabledButton.click();
         WebElement enabledText = wait.waitForVisibilityLocatedBy(By.xpath("//form/p[@id='message']"));
-        Assert.assertEquals(wait.waitForVisibility(input), input);
+        Assert.assertTrue(wait.waitForVisibility(input).isEnabled());
 
     }
 }
