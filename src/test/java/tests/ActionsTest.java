@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.WaitsService;
 
@@ -37,6 +38,23 @@ public class ActionsTest extends BaseTest {
         driver.get("http://the-internet.herokuapp.com/upload");
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
         WebElement fileUpload = driver.findElement(By.id("file-upload"));
+
+    }
+    @Test
+    public void dynamicControlTest() {
+        driver.get("http://the-internet.herokuapp.com/dynamic_controls");
+        Actions actions = new Actions(driver);
+        WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
+        WebElement checkbox = wait.waitForVisibilityLocatedBy(By.xpath("//input[@type='checkbox']"));
+        WebElement button = wait.waitForVisibilityLocatedBy(By.xpath("//form/button[contains(text(), 'Remove')]"));
+        button.click();
+        Assert.assertTrue(wait.waitForElementInvisible(checkbox));
+        WebElement input  = wait.waitForVisibilityLocatedBy(By.xpath("//form/input[@type='text']"));
+        Assert.assertTrue(wait.waitForVisibilityLocatedBy(By.xpath("//form/input[@disabled]")).isDisplayed());
+        WebElement enabledButton = wait.waitForVisibilityLocatedBy(By.xpath("//form/button[contains(text(), 'Enable')]"));
+        enabledButton.click();
+        WebElement enabledText = wait.waitForVisibilityLocatedBy(By.xpath("//form/p[@id='message']"));
+        Assert.assertEquals(wait.waitForVisibility(input), input);
 
     }
 }

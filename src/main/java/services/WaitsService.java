@@ -35,9 +35,10 @@ public class WaitsService {
     public WebElement waitForPresenceOfElement(By locator){
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
-    public boolean waitForElementInvisible(WebElement element){
+    public boolean waitForElementInvisible(WebElement element) {
         return wait.until(ExpectedConditions.invisibilityOf(element));
     }
+
     public WebElement fluentWaitForElement(By locator){
         Wait<WebDriver>fluent = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
