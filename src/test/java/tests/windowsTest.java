@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class WindowsTest extends BaseTest {
+public class windowsTest extends BaseTest {
 
     @Test
     public void newTabTest() throws InterruptedException {
