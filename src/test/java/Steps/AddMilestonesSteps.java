@@ -14,7 +14,7 @@ public class AddMilestonesSteps extends BaseStep {
     public MilestonesPage addNewMilestone(String name, String reference, String description, String start, String end){
         addNewMilestonePage.getInputName().sendKeys(name);
         addNewMilestonePage.getInputReference().sendKeys(reference);
-        addNewMilestonePage.getDropdownParent("Release 1.0");
+        //addNewMilestonePage.getDropdownParent("233w");
         addNewMilestonePage.getInputDescription().sendKeys(description);
         addNewMilestonePage.getInputStartDate().sendKeys(start);
         addNewMilestonePage.getInputEndDate().sendKeys(end);

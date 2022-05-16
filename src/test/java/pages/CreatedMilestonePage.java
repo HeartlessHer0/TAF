@@ -9,7 +9,7 @@ public class CreatedMilestonePage extends BasePage {
     private By statusChartContainerLocator = By.xpath("//*[@id='statusChartContainer']");
     private By editButtonLocator = By.xpath("//*[contains(text(), 'Edit')]");
     private By milestoneDescriptionLocator = By.xpath("//div[@class='markdown']/p");
-    private By milestoneHeaderLocator = By.xpath("//div[@class='content-header-title page_title display-inline-block']");
+    private By milestoneHeaderLocator = By.xpath("//div[@class='content-header-title page_title']");
     public MilestoneSidebarPage milestoneSidebarPage;
 
     public CreatedMilestonePage(WebDriver driver) {
