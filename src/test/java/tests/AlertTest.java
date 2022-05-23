@@ -30,7 +30,7 @@ public class AlertTest extends BaseTest {
     @Test
     public void confirmationDeclineAlertTest() {
         driver.get("http://the-internet.herokuapp.com/javascript_alerts");
-        driver.findElement(By.xpath("//li/button[@onclick='jsPromt()']")).click();
+        driver.findElement(By.xpath("//li/button[@onclick='jsConfirm()']")).click();
         Alert alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), "I am a JS Confirm");
         alert.dismiss();
