@@ -59,4 +59,5 @@ public class AllureTest{
     public void testLink(){
         Assert.assertTrue(true);
     }
+    //Allure.addAttachment(UUID.randomUUID().toString(), new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES))); bad choise for screenshots
 }

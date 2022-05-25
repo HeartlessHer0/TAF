@@ -3,6 +3,7 @@ package pages;
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ProjectsPage extends BasePage {
     private final static String pagePath = "/index.php?/admin/projects/overview";
@@ -11,8 +12,8 @@ public class ProjectsPage extends BasePage {
 
 
     @Override
-    protected By getPageIdentifier() {
-        return headerTitleLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(headerTitleLocator);
     }
 
     public ProjectsPage(WebDriver driver) {

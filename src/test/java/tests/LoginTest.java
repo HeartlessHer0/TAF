@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import services.BrowsersService;
+import io.qameta.allure.*;
 
 public class LoginTest extends BaseTest {
 
@@ -22,7 +23,7 @@ public class LoginTest extends BaseTest {
     public void incorrectEmailLoginTest() {
         Assert.assertEquals(
                 loginStep.incorrectLogin(
-                        "tgsegseg", ReadProperties.password()).getErrorTextElement().getText(),
+                        "tgsegseg", ReadProperties.password()).errorText.getText(),
                 "Email/Login or Password is incorrect. Please try again.", "Неверное сообщение об ошибке");
         Assert.assertTrue(false);
     }
@@ -31,7 +32,7 @@ public class LoginTest extends BaseTest {
     public void incorrectPswLoginTest() {
         Assert.assertEquals(
                 loginStep.incorrectLogin(
-                        ReadProperties.username(), "sfasf").getErrorTextElement().getText(),
+                        ReadProperties.username(), "sfasf").errorText.getText(),
                 "Email/Login or Password is incorrect. Please try again.", "Неверное сообщение об ошибке");
     }
 }

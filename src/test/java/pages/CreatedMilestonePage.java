@@ -18,8 +18,8 @@ public class CreatedMilestonePage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return statusChartContainerLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(statusChartContainerLocator);
     }
     public WebElement getEditButton(){return waitsService.waitForPresenceOfElement(editButtonLocator);}
     public WebElement getMilestoneDescription(){return waitsService.waitForPresenceOfElement(milestoneDescriptionLocator);}

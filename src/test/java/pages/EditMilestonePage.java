@@ -19,8 +19,8 @@ public class EditMilestonePage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return attachmentListLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(attachmentListLocator);
     }
 
     public WebElement getDescriptionDisplay(){return  waitsService.waitForPresenceOfElement(descriptionDisplayLocator);}

@@ -15,8 +15,8 @@ public class AddProjectPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return nameInputLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(nameInputLocator);
     }
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);

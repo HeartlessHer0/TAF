@@ -16,8 +16,8 @@ public class MilestonesPage extends BasePage {
         super(driver);
     }
     @Override
-    protected By getPageIdentifier() {
-        return addMilestoneButtonLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(addMilestoneButtonLocator);
     }
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);

@@ -21,8 +21,8 @@ public class AddNewMilestonePage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return inputNameLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(inputNameLocator);
     }
     public WebElement getInputName(){return waitsService.waitForPresenceOfElement(inputNameLocator);}
     public WebElement getInputReference(){return waitsService.waitForPresenceOfElement(inputReferenceLocator);}

@@ -15,8 +15,8 @@ public class SideMenuPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return sideBarLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(sideBarLocator);
     }
 
 }

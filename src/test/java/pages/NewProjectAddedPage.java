@@ -12,8 +12,8 @@ public class NewProjectAddedPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return successMessageLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(successMessageLocator);
     }
     private By successMessageLocator = By.xpath("//*[@class='message message-success']");
 
