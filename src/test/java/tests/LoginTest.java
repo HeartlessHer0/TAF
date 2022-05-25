@@ -34,4 +34,12 @@ public class LoginTest extends BaseTest {
                         ReadProperties.username(), "sfasf").getErrorTextElement().getText(),
                 "Email/Login or Password is incorrect. Please try again.", "Неверное сообщение об ошибке");
     }
+    @Test
+    public void successLoginInvocationsTest() {
+        Assert.assertTrue(new LoginPage(driver)
+                .successLogin("asdasd","asafa")
+                .openProject("asfasfa")
+                .getTabByName("asgadg").isDisplayed());
+
+    }
 }
