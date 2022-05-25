@@ -4,6 +4,7 @@ import Steps.LoginStep;
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import models.User;
+import models.UserBuilder;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -22,6 +23,7 @@ public class LoginTest extends BaseTest {
         user.setPsw(ReadProperties.password());
         Assert.assertTrue(loginStep.successLogin(user).isPageOpened());
     }
+
     @Test
     public void incorrectEmailLoginTest() {
         User user = new User();
@@ -41,5 +43,13 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(
                 loginStep.incorrectLogin(user).getErrorTextElement().getText(),
                 "Email/Login or Password is incorrect. Please try again.", "Неверное сообщение об ошибке");
+    }
+
+    @Test
+    public void successLoginBuilderTest() {
+        UserBuilder user = new UserBuilder.Builder()
+                .withEmail("asdasd")
+                .withPsw("afasfaf")
+                .build();
     }
 }
