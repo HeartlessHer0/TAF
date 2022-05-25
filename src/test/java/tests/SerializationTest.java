@@ -32,12 +32,11 @@ public class SerializationTest {
                 "  \"type\": 2\n" +
                 "}";
         Project projectFromString = gson.fromJson(json, Project.class);
-        System.out.println(projectFromString.toString());
-        System.out.println(projectFromString.getName());
+       // System.out.println(projectFromString.toString());
+       // System.out.println(projectFromString.getName());
 
         Reader reader = Files.newBufferedReader(Paths.get("projectResult.json"));
         Project projectFromFile = gson.fromJson(reader, Project.class);
-        System.out.println(projectFromFile.toString());
-
+       // System.out.println(projectFromFile.toString());
     }
 }
