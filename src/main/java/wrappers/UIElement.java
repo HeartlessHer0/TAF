@@ -1,9 +1,12 @@
 package wrappers;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import services.WaitsService;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UIElement implements WebElement {
@@ -17,6 +20,11 @@ public class UIElement implements WebElement {
        this.by = by;
        this.waits = new WaitsService(driver, Duration.ofSeconds(20));
        this.webElement = driver.findElement(by);
+    }
+    public UIElement(WebDriver driver, WebElement webElement) {
+        this.driver = driver;
+        this.waits = new WaitsService(driver, Duration.ofSeconds(20));
+        this.webElement = webElement;
     }
 
     @Override
@@ -98,8 +106,8 @@ public class UIElement implements WebElement {
     }
 
     @Override
-    public WebElement findElement(By by) {
-        return webElement.findElement(by);
+    public UIElement findElement(By by) {
+        return new UIElement(driver, webElement.findElement(by));
     }
 
     @Override
@@ -135,5 +143,12 @@ public class UIElement implements WebElement {
     @Override
     public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
         return webElement.getScreenshotAs(target);
+    }
+    public ArrayList<UIElement> findUIElements(By by) {
+        ArrayList<UIElement> list = new ArrayList<>();
+        for (WebElement element : webElement.findElements(by)) {
+            list.add(new UIElement(driver, element));
+        }
+        return list;
     }
 }
