@@ -26,7 +26,7 @@ public class BaseTest {
         navigationSteps= new NavigationSteps(driver);
         addNewProjectSteps = new AddNewProjectSteps(driver);
         addMilestonesSteps = new AddMilestonesSteps(driver);
-        //driver.get(ReadProperties.getUrl());
+        driver.get(ReadProperties.getUrl());
     }
 
     @AfterMethod

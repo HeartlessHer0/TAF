@@ -38,6 +38,9 @@ public class WaitsService {
     public boolean waitForElementInvisible(WebElement element) {
         return wait.until(ExpectedConditions.invisibilityOf(element));
     }
+    public WebElement waitForClickableElement(By locator){
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 
 
     public WebElement fluentWaitForElement(By locator){

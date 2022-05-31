@@ -30,7 +30,7 @@ public class AddNewMilestonePage extends BasePage {
     public WebElement getInputDescription(){return waitsService.waitForPresenceOfElement(inputDescriptionLocator);}
     public WebElement getInputStartDate(){return waitsService.waitForPresenceOfElement(inputStartDateLocator);}
     public WebElement getInputEndDate(){return waitsService.waitForPresenceOfElement(inputEndDateLocator);}
-    public WebElement getAddMilestoneButton(){return waitsService.waitForPresenceOfElement(AddMilestoneButtonLocator);}
+    public WebElement getAddMilestoneButton(){return waitsService.waitForClickableElement(AddMilestoneButtonLocator);}
 
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);
