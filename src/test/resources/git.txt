@@ -1,1 +1,19 @@
-Test GIT
+
+TASK_1
+*
+git checkout  Actions
+git branch develop
+git branch task_1
+git checkout task_1
+git add description.txt
+echo "Put any content here" >> description.txt
+git commit -m "Some Commit"
+echo "More Text" >> description.txt
+git commit -m "Second Commit"
+git push task_1
+git checkout develop
+git merge task_1
+git push develop
+git branch -d task_1
+git push origin --delete task_1
+*
