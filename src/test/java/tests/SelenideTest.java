@@ -3,7 +3,9 @@ package tests;
 import com.codeborne.selenide.AssertionMode;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import configuration.ReadProperties;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeSuite;
@@ -13,6 +15,7 @@ import pages.LoginPage;
 import javax.security.auth.login.LoginContext;
 
 import java.io.File;
+import java.time.Duration;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
@@ -33,6 +36,18 @@ public class SelenideTest {
         // Configuration.fastSetValue = false;
         // Configuration.headless = true;
         Configuration.reportsFolder = "target/screenshots";
+        Configuration.pageLoadTimeout = Duration.ofSeconds(30).toMillis();
+        Configuration.timeout = 20000;
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
+        /* or for fine-tuning:
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(false)
+                .savePageSource(true)
+        );
+
+         */
 
 
     }
@@ -63,7 +78,7 @@ public class SelenideTest {
         $(By.id("name")).setValue(ReadProperties.username());
         $("#password").setValue(ReadProperties.password());
         $("#button_primary").click();
-        $(".page_title").shouldBe(visible).shouldHave(text("All Projects"));
+        $(".page_title").shouldBe(visible).shouldHave(textCaseSensitive("all Projects"));
     }
 
     @Test
@@ -139,6 +154,17 @@ public class SelenideTest {
                 .shouldHave(name("fname")).shouldHave(value("John")).shouldHave(type("checkbox")).shouldBe(empty)
                 .shouldBe(focused);
         WebElement webElement = $("#anouncement").toWebElement();
+
+        Condition clickable = and("Can be clickable", visible,enabled);
+        $$("#anouncement")
+                .findBy(clickable).click();
+        $("#anouncement").shouldBe(clickable);
+        $("#anouncement")
+                .shouldHave(text("Expected text"))
+                .shouldHave(matchText("regex"))
+                .shouldHave(exactText(" Exact Text "))
+                .shouldHave(textCaseSensitive("expected Result Text"))
+                .shouldHave(exactTextCaseSensitive("expected Result Text"));
     }
 
 }
