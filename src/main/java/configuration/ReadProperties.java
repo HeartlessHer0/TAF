@@ -19,6 +19,10 @@ public class ReadProperties {
         return properties.getProperty("url");
     }
 
+    public static int timeout() {
+        return Integer.parseInt(properties.getProperty("timeout"));
+    }
+
     public static String browserName() {
         return properties.getProperty("browser");
     }
@@ -29,6 +33,10 @@ public class ReadProperties {
 
     public static String password() {
         return properties.getProperty("password");
+    }
+
+    public static String milestoneName() {
+        return properties.getProperty("milestonename");
     }
 
     public static boolean isHeadless() {
