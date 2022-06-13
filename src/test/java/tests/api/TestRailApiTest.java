@@ -1,9 +1,11 @@
 package tests.api;
 
+import com.google.gson.Gson;
 import configuration.Endpoints;
 import configuration.ReadProperties;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.Project;
@@ -17,6 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 
 public class TestRailApiTest extends BaseApiTest {
 
@@ -107,6 +111,56 @@ public class TestRailApiTest extends BaseApiTest {
                 .extract()
                 .as(Project.class);
         System.out.println(newProject.toString());
+    }
+    @Test
+    public void validateNameOfProjectsTest(){
+        given()
+                .when()
+                .get(Endpoints.GET_PROJECTS)
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .body("projects.get(0).id", is(1))
+                .body("projects.get(0).name", equalTo("WP Test"));
+                //.extract()
+               // .jsonPath("$.projects[0].id")
+    }
+    @Test
+    public void validateNameOfProjectsWithJsonPathTest(){
+        JsonPath jsonPath = given()
+                .when()
+                .get(Endpoints.GET_PROJECTS)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath();
+        String name = jsonPath.getString("projects[0].name");
+        int id = jsonPath.getInt("projects[0].id");
+        Assert.assertEquals(name, "WP Test");
+        Assert.assertEquals(id, 1);
+    }
+    @Test
+    public void getExactProject(){
+        given()
+                .pathParam("project_id", 1)
+                .get(Endpoints.GET_PROJECT)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .body("id",is(1))
+                .body("name", equalTo("WP Test"));
+    }
+    @Test
+    public void getExactProjectAsObjectTest(){
+        Response response = given()
+                .pathParam("project_id", 1)
+                .get(Endpoints.GET_PROJECT);
+
+        Project actualProject = new Gson().fromJson(response.getBody().asString(), Project.class);
+        Assert.assertEquals(actualProject.getName(), "WP Test");
+
+
     }
 
 
