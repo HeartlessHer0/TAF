@@ -28,15 +28,11 @@ public class ReadProperties {
     }
 
     public static String username() {
-        return properties.getProperty("username");
+        return properties.getProperty("email");
     }
 
     public static String password() {
         return properties.getProperty("password");
-    }
-
-    public static String milestoneName() {
-        return properties.getProperty("milestonename");
     }
 
     public static boolean isHeadless() {

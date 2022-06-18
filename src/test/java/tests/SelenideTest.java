@@ -61,7 +61,7 @@ public class SelenideTest {
         $(".page_title").shouldBe(visible).shouldHave(text("All Projects1"));
     }
 
-    @Test
+   /* @Test
     public void pageObjectSelenideTest() {
         open(ReadProperties.getUrl());
         LoginPage loginPage = new LoginPage();
@@ -69,7 +69,7 @@ public class SelenideTest {
         loginPage.password.setValue(ReadProperties.password());
         loginPage.loginButton.click();
         $(".page_title").shouldBe(visible).shouldHave(text("All Projects1"));
-    }
+    }*/
 
     @Test
     public void selenideTestWithConfig() {
