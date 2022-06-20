@@ -51,4 +51,9 @@ public class CustomersTable {
 
         return dataBaseService.executeQuery(selectSQL);
     }
+    public ResultSet getCustomerById(int ID) {
+        String selectSQL = "SELECT * FROM public.Customers WHERE ID ="+ ID+ ";";
+
+        return dataBaseService.executeQuery(selectSQL);
+    }
 }
