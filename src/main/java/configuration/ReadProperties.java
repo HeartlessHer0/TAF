@@ -28,7 +28,7 @@ public class ReadProperties {
     }
 
     public static String username() {
-        return properties.getProperty("email");
+        return properties.getProperty("username");
     }
 
     public static String password() {
