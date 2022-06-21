@@ -1,23 +1,14 @@
 package models;
 
-
-
 import java.util.Objects;
 
 
 public class CustomerSimple {
-    private int id;
 
-
+       private int id;
     public String firstName;
-
-
     public String lastName;
-
-
     public String email;
-
-
     public Integer age;
 
     public CustomerSimple() {
@@ -77,7 +68,7 @@ public class CustomerSimple {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + age +
+                ", ageName=" + age +
                 '}';
     }
 

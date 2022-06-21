@@ -10,6 +10,7 @@ import services.DataBaseService;
 
 public class BaseDBTest {
     Logger logger = LoggerFactory.getLogger(BaseDBTest.class);
+
     CustomersTable customersTable;
 
     public DataBaseService dataBaseService;
@@ -20,6 +21,7 @@ public class BaseDBTest {
     @BeforeTest
     public void setupConnection() {
         dataBaseService = new DataBaseService();
+
 
         customersTable = new CustomersTable(dataBaseService);
         customersTable.dropTable();

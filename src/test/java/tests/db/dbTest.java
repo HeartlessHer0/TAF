@@ -1,9 +1,6 @@
 package tests.db;
 
 import dbEntities.Customer;
-import dbEntities.CustomersTable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import services.CustomerService;
 
@@ -12,7 +9,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class dbTest extends BaseDBTest{
-    Logger logger = LoggerFactory.getLogger(dbTest.class);
 
     @Test
     public void firstTest() {
@@ -40,8 +36,9 @@ public class dbTest extends BaseDBTest{
 
         logger.info("Test is completed...");
     }
+
     @Test
-    public void customerByIDTest() {
+    public void customerByIdTest() {
         logger.info("Test is started...");
 
         ResultSet rs = customersTable.getCustomerById(2);
@@ -66,15 +63,18 @@ public class dbTest extends BaseDBTest{
 
         logger.info("Test is completed...");
     }
+
     @Test
     public void hibernateTest(){
         CustomerService customerService = new CustomerService();
-        Customer customer = new Customer("Hleb", "Zhiglov", "military@test.com",44);
+        Customer customer = new Customer("Gleb", "Zhiglov", "military@test.com", 44);
         customerService.saveUser(customer);
+
         List<Customer> customerList = customerService.findAllUsers();
-        for(Customer cust : customerList){
+        for (Customer cust: customerList){
             logger.info(cust.toString());
         }
+
 
     }
 }

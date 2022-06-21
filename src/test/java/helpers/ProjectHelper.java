@@ -1,47 +1,29 @@
 package helpers;
 
-import com.google.gson.Gson;
 import configuration.Endpoints;
-import io.restassured.response.Response;
 import models.Project;
 import org.apache.http.HttpStatus;
 
-
-import java.lang.reflect.Type;
-import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-
 public class ProjectHelper {
 
-    public Project getProject(int project_id){
+    public Project addProject(Map<String, Object> request) {
         return given()
-                .pathParam("project_id", project_id)
-                .get(Endpoints.GET_PROJECT)
+                .body(request)
+                .post(Endpoints.ADD_PROJECT)
                 .then()
-                .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .extract()
-                .as(Project.class);
-
+                .extract().as(Project.class);
     }
-    public Response getProjectResponse(int project_id){
-        return given()
-                .pathParam("project_id", project_id)
-                .get(Endpoints.GET_PROJECT);
 
-    }
-    public List<Project> getAllProjects() {
-        Response response =  given()
-                .get(Endpoints.GET_PROJECTS);
-        return response.getBody().jsonPath().getList("projects",Project.class);
-
-    }
-    public Response getAllProjectsResponse(){
-        return given()
-                .get(Endpoints.GET_PROJECTS);
-
-
+    public void deleteProject(int projectId) {
+        given()
+                .pathParam("project_id", projectId)
+                .post(Endpoints.DELETE_PROJECT)
+                .then()
+                .statusCode(HttpStatus.SC_OK);
     }
 }

@@ -1,7 +1,6 @@
 package dao;
 
 import dbEntities.Customer;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
