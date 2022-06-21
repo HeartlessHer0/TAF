@@ -136,7 +136,9 @@ public class TestRailApiTest extends BaseApiTest {
                 .extract()
                 .jsonPath();
         String name = jsonPath.getString("projects[0].name");
+        System.out.println(name);
         int id = jsonPath.getInt("projects[0].id");
+        System.out.println(id);
         Assert.assertEquals(name, "WP Test");
         Assert.assertEquals(id, 1);
     }
