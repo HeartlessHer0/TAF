@@ -36,6 +36,7 @@ public class MilestoneAPITest extends BaseApiTest{
                 jsonAsMap.put("project_id", projectId);
                 jsonAsMap.put("name", milestoneName);
                 jsonAsMap.put("description", description);
+                logger.info("Создание тела JSON запроса POST Milestone ");
 
                 Milestone milestone = given()
                         .pathParam("project_id", projectId)
@@ -45,6 +46,7 @@ public class MilestoneAPITest extends BaseApiTest{
                         .then()
                         .statusCode(HttpStatus.SC_OK)
                         .extract().as(Milestone.class);
+                logger.info("Получение ответа по запросу на создание Milestone");
 
                 Assert.assertEquals(milestone.getProjectId(), jsonAsMap.get("project_id"));
                 Assert.assertEquals(milestone.getName(), jsonAsMap.get("name"));

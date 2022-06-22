@@ -58,12 +58,14 @@ public class BaseApiTest {
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
                 .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
+        logger.info("Подключение REST Assured");
 
         Map<String, Object> jsonAsMap = new HashMap<>();
         jsonAsMap.put("name", "Sergey_Z");
         jsonAsMap.put("announcement", "API and DB Test");
         jsonAsMap.put("show_announcement", true);
         jsonAsMap.put("suite_mode", ProjectType.SINGLE_SUITE_MODE);
+        logger.info("Создание проекта");
 
         baseProject = projectHelper.addProject(jsonAsMap);
 
@@ -73,16 +75,19 @@ public class BaseApiTest {
         milestoneTable = new MilestoneTable(dataBaseService);
         milestoneTable.dropTable();
         milestoneTable.createMilestoneTable();
+        logger.info("Создание таблицы Milestone");
 
         milestoneTable.addMilestone(baseProject.projectId,"Test MST One", "Some Test Description 1");
         milestoneTable.addMilestone(baseProject.projectId, "Test MST Two", "Some Test Description 2");
         milestoneTable.addMilestone(baseProject.projectId, "Test MST Three", "Some Test Description 3");
+        logger.info("Заполнение таблицы Milestone строками");
     }
 
     @AfterClass
     public void deleteBaseTestProject() {
         //todo test with it in final
        projectHelper.deleteProject(baseProject.getProjectId());
+       logger.info("Удаление созданного проекта");
     }
 
     @AfterTest
