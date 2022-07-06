@@ -19,7 +19,7 @@ public class CustomersTable {
         logger.info("Удаляем customers таблицу");
         String dropTableCustomersSQL = "DROP TABLE Customers;";
 
-        dataBaseService.executeSql(dropTableCustomersSQL);
+        dataBaseService.executeSQL(dropTableCustomersSQL);
     }
 
     public void createCustomersTable() {
@@ -33,8 +33,9 @@ public class CustomersTable {
                 "Age INTEGER" +
                 ");";
 
-        dataBaseService.executeSql(createTableSQL);
+        dataBaseService.executeSQL(createTableSQL);
     }
+
 
     public void addCustomer(String firstName, String lastName, String email, int age) {
         logger.info("Добавляем запись в таблицу");
@@ -43,7 +44,7 @@ public class CustomersTable {
                 "firstname, lastname, email, age)" +
                 "VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', " + age + ");";
 
-        dataBaseService.executeSql(insertTableSQL);
+        dataBaseService.executeSQL(insertTableSQL);
     }
 
     public ResultSet getCustomers() {
@@ -51,8 +52,9 @@ public class CustomersTable {
 
         return dataBaseService.executeQuery(selectSQL);
     }
-    public ResultSet getCustomerById(int ID) {
-        String selectSQL = "SELECT * FROM public.Customers WHERE ID ="+ ID+ ";";
+
+    public ResultSet getCustomerById(int id) {
+        String selectSQL = "SELECT * FROM public.Customers  WHERE ID="+ id +" ORDER BY id ASC;";
 
         return dataBaseService.executeQuery(selectSQL);
     }
